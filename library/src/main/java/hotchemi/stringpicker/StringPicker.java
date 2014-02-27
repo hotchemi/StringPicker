@@ -16,6 +16,8 @@ public class StringPicker extends LinearLayout {
 
     private Class<?> mClazz;
 
+    private String[] mValues;
+
     private static final int SDK_VERSION;
 
     private static final String PICKER_CLASS;
@@ -51,7 +53,12 @@ public class StringPicker extends LinearLayout {
         }
     }
 
+    public String getCurrentValue() {
+        return mValues[getCurrent()];
+    }
+
     public void setValues(final String[] values) {
+        mValues = values;
         if (isUnderHoneyComb()) {
             try {
                 Method method = mClazz.getMethod("setRange", int.class, int.class, String[].class);
@@ -72,11 +79,8 @@ public class StringPicker extends LinearLayout {
     }
 
     public void setValues(final List<String> values) {
-        setValues(values.toArray(new String[values.size()]));
-    }
-
-    private static boolean isUnderHoneyComb() {
-        return SDK_VERSION < Build.VERSION_CODES.HONEYCOMB;
+        mValues = new String[values.size()];
+        setValues(values.toArray(mValues));
     }
 
     private void initialize(final Context context, final AttributeSet attrs) {
@@ -90,6 +94,10 @@ public class StringPicker extends LinearLayout {
         }
         addView((View) mInstance);
         setOrientation(VERTICAL);
+    }
+
+    private static boolean isUnderHoneyComb() {
+        return SDK_VERSION < Build.VERSION_CODES.HONEYCOMB;
     }
 
 }
