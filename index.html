@@ -4,36 +4,45 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>Stringpicker by hotchemi</title>
-
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="javascripts/scale.fix.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
     <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
   </head>
   <body>
-    <div class="wrapper">
+
       <header>
-        <h1 class="header">Stringpicker</h1>
-        <p class="header"></p>
-
-        <ul>
-          <li class="download"><a class="buttons" href="https://github.com/hotchemi/StringPicker/zipball/master">Download ZIP</a></li>
-          <li class="download"><a class="buttons" href="https://github.com/hotchemi/StringPicker/tarball/master">Download TAR</a></li>
-          <li><a class="buttons github" href="https://github.com/hotchemi/StringPicker">View On GitHub</a></li>
-        </ul>
-
-        <p class="header">This project is maintained by <a class="header name" href="https://github.com/hotchemi">hotchemi</a></p>
-
-
+        <h1>Stringpicker</h1>
+        <p></p>
       </header>
+
+      <div id="banner">
+        <span id="logo"></span>
+
+        <a href="https://github.com/hotchemi/StringPicker" class="button fork"><strong>View On GitHub</strong></a>
+        <div class="downloads">
+          <span>Downloads:</span>
+          <ul>
+            <li><a href="https://github.com/hotchemi/StringPicker/zipball/master" class="button">ZIP</a></li>
+            <li><a href="https://github.com/hotchemi/StringPicker/tarball/master" class="button">TAR</a></li>
+          </ul>
+        </div>
+      </div><!-- end banner -->
+
+    <div class="wrapper">
+      <nav>
+        <ul></ul>
+      </nav>
       <section>
         <h1>
 <a name="stringpicker" class="anchor" href="#stringpicker"><span class="octicon octicon-link"></span></a>StringPicker</h1>
 
-<p>StringPicker is a library to provides a string picker custom view and dialog.</p>
+<p>StringPicker is a library to provides a custom view and dialog fragment to pick string value.</p>
 
 <p><img src="http://gifzo.net/5dMGZEDfpZ.gif" alt="screen shot"></p>
 
@@ -64,6 +73,8 @@
 <h3>
 <a name="stringpicker-1" class="anchor" href="#stringpicker-1"><span class="octicon octicon-link"></span></a>StringPicker</h3>
 
+<p>Custom view.</p>
+
 <div class="highlight highlight-xml"><pre><span class="nt">&lt;hotchemi.stringpicker.StringPicker</span>
     <span class="na">android:id=</span><span class="s">"@+id/string_picker"</span>
     <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
@@ -71,9 +82,12 @@
 </pre></div>
 
 <div class="highlight highlight-java"><pre><span class="n">StringPicker</span> <span class="n">stringPicker</span> <span class="o">=</span> <span class="o">(</span><span class="n">StringPicker</span><span class="o">)</span> <span class="n">view</span><span class="o">.</span><span class="na">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">string_picker</span><span class="o">);</span>
-<span class="n">String</span><span class="o">[]</span> <span class="n">values</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">[]</span> <span class="o">{</span><span class="s">"北海道"</span><span class="o">,</span><span class="s">"青森県"</span><span class="o">,</span><span class="s">"岩手県"</span><span class="o">,</span><span class="s">"宮城県"</span><span class="o">,</span><span class="s">"秋田県"</span><span class="o">,</span><span class="s">"山形県"</span><span class="o">};</span>
-<span class="c1">// set values</span>
+<span class="c1">// set string array</span>
+<span class="n">String</span><span class="o">[]</span> <span class="n">values</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">[]</span> <span class="o">{</span><span class="s">"a"</span><span class="o">,</span><span class="s">"b"</span><span class="o">,</span><span class="s">"c"</span><span class="o">,</span><span class="s">"d"</span><span class="o">,</span><span class="s">"e"</span><span class="o">,</span><span class="s">"f"</span><span class="o">};</span>
 <span class="n">stringPicker</span><span class="o">.</span><span class="na">setValues</span><span class="o">(</span><span class="n">values</span><span class="o">);</span>
+<span class="c1">// or set list</span>
+<span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="n">values</span><span class="o">.</span><span class="na">toArray</span><span class="o">(</span><span class="k">new</span> <span class="n">String</span><span class="o">[</span><span class="n">values</span><span class="o">.</span><span class="na">size</span><span class="o">()]);</span>
+<span class="n">stringPicker</span><span class="o">.</span><span class="na">setValues</span><span class="o">(</span><span class="n">list</span><span class="o">);</span>
 
 <span class="c1">// get value</span>
 <span class="n">stringPicker</span><span class="o">.</span><span class="na">getCurrentValue</span><span class="o">()</span>
@@ -84,9 +98,10 @@
 
 <p>implements in your activity.</p>
 
-<div class="highlight highlight-java"><pre><span class="n">Bundle</span> <span class="n">bundle</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Bundle</span><span class="o">();</span>
-<span class="n">bundle</span><span class="o">.</span><span class="na">putStringArray</span><span class="o">(</span><span class="n">getString</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">string</span><span class="o">.</span><span class="na">string_picker_dialog_values</span><span class="o">),</span> <span class="n">getStringArray</span><span class="o">());</span>
-<span class="n">StringPickerDialog</span> <span class="n">dialog</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringPickerDialog</span><span class="o">();</span>
+<div class="highlight highlight-java"><pre><span class="n">StringPickerDialog</span> <span class="n">dialog</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringPickerDialog</span><span class="o">();</span>
+<span class="n">Bundle</span> <span class="n">bundle</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Bundle</span><span class="o">();</span>
+<span class="n">String</span><span class="o">[]</span> <span class="n">values</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">[]</span> <span class="o">{</span><span class="s">"a"</span><span class="o">,</span><span class="s">"b"</span><span class="o">,</span><span class="s">"c"</span><span class="o">,</span><span class="s">"d"</span><span class="o">,</span><span class="s">"e"</span><span class="o">,</span><span class="s">"f"</span><span class="o">};</span>
+<span class="n">bundle</span><span class="o">.</span><span class="na">putStringArray</span><span class="o">(</span><span class="n">getString</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">string</span><span class="o">.</span><span class="na">string_picker_dialog_values</span><span class="o">),</span> <span class="n">values</span><span class="o">);</span>
 <span class="n">dialog</span><span class="o">.</span><span class="na">setArguments</span><span class="o">(</span><span class="n">bundle</span><span class="o">);</span>
 <span class="n">dialog</span><span class="o">.</span><span class="na">show</span><span class="o">(</span><span class="n">getSupportFragmentManager</span><span class="o">(),</span> <span class="n">TAG</span><span class="o">);</span>
 </pre></div>
@@ -137,6 +152,7 @@
 
 <ul>
 <li>2014/02/28 v0.0.1 release.</li>
+<li>2014/03/01 v0.0.2 release.</li>
 </ul><h2>
 <a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
 
@@ -156,10 +172,11 @@ limitations under the License.
 </code></pre>
       </section>
       <footer>
-        <p><small>Hosted on <a href="http://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+        <p>Project maintained by <a href="https://github.com/hotchemi">hotchemi</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></small></p>
       </footer>
     </div>
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-		
+    
   </body>
 </html>
