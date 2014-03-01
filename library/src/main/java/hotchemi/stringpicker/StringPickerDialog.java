@@ -52,12 +52,12 @@ public class StringPickerDialog extends DialogFragment {
         return builder.create();
     }
 
-    public interface OnClickListener {
-        public void onClick(final String value);
-    }
-
     private String getValue(final int resId) {
         return mActivity.getString(resId);
+    }
+
+    public interface OnClickListener {
+        void onClick(final String value);
     }
 
 }

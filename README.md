@@ -1,7 +1,7 @@
 StringPicker
 ============
 
-StringPicker is a library to provides a string picker custom view and dialog.
+StringPicker is a library to provides a custom view and dialog fragment to pick string value.
 
 ![screen shot](http://gifzo.net/5dMGZEDfpZ.gif)
 
@@ -29,6 +29,8 @@ Please try to move the [sample module](https://github.com/hotchemi/StringPicker/
 
 ### StringPicker
 
+Custom view.
+
 ```xml
 <hotchemi.stringpicker.StringPicker
     android:id="@+id/string_picker"
@@ -38,9 +40,12 @@ Please try to move the [sample module](https://github.com/hotchemi/StringPicker/
 
 ```java
 StringPicker stringPicker = (StringPicker) view.findViewById(R.id.string_picker);
-String[] values = new String[] {"北海道","青森県","岩手県","宮城県","秋田県","山形県"};
-// set values
+// set string array
+String[] values = new String[] {"a","b","c","d","e","f"};
 stringPicker.setValues(values);
+// or set list
+List<String> list = values.toArray(new String[values.size()]);
+stringPicker.setValues(list);
 
 // get value
 stringPicker.getCurrentValue()
@@ -51,9 +56,10 @@ stringPicker.getCurrentValue()
 implements in your activity.
 
 ```java
-Bundle bundle = new Bundle();
-bundle.putStringArray(getString(R.string.string_picker_dialog_values), getStringArray());
 StringPickerDialog dialog = new StringPickerDialog();
+Bundle bundle = new Bundle();
+String[] values = new String[] {"a","b","c","d","e","f"};
+bundle.putStringArray(getString(R.string.string_picker_dialog_values), values);
 dialog.setArguments(bundle);
 dialog.show(getSupportFragmentManager(), TAG);
 ```
@@ -101,6 +107,7 @@ $ ./gradlew uploadArchives
 ## ChangeLog
 
 - 2014/02/28 v0.0.1 release.
+- 2014/03/01 v0.0.2 release.
 
 ## License
 

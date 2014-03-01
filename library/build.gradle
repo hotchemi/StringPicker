@@ -7,8 +7,6 @@ android {
     defaultConfig {
         minSdkVersion 8
         targetSdkVersion 19
-        versionCode 1
-        versionName "1.0"
     }
 }
 
@@ -25,7 +23,7 @@ uploadArchives {
     repositories {
         mavenDeployer {
             repository url: "file://${repos.absolutePath}"
-            pom.version = '0.0.1'
+            pom.version = '0.0.2'
             pom.groupId = 'hotchemi.stringpicker'
             pom.artifactId = 'stringpicker'
         }

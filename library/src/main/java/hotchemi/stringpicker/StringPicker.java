@@ -5,6 +5,7 @@ import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.NumberPicker;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
@@ -30,11 +31,11 @@ public class StringPicker extends LinearLayout {
 
     public StringPicker(Context context, AttributeSet attrs) {
         super(context, attrs);
-        initialize(context, attrs);
+        init(context, attrs);
     }
 
     public void setCurrent(final int current) {
-        final String methodName = isUnderHoneyComb() ? "setCurrent" : "setValue";
+        String methodName = isUnderHoneyComb() ? "setCurrent" : "setValue";
         try {
             Method method = mClazz.getMethod(methodName, int.class);
             method.invoke(mInstance, current);
@@ -44,7 +45,7 @@ public class StringPicker extends LinearLayout {
     }
 
     public int getCurrent() {
-        final String methodName = isUnderHoneyComb() ? "getCurrent" : "getValue";
+        String methodName = isUnderHoneyComb() ? "getCurrent" : "getValue";
         try {
             Method method = mClazz.getMethod(methodName);
             return (Integer) method.invoke(mInstance);
@@ -70,8 +71,7 @@ public class StringPicker extends LinearLayout {
             try {
                 mClazz.getMethod("setMaxValue", int.class).invoke(mInstance, values.length - 1);
                 mClazz.getMethod("setMinValue", int.class).invoke(mInstance, 0);
-                mClazz.getMethod("setDisplayedValues", String[].class)
-                        .invoke(mInstance, new Object[]{values});
+                mClazz.getMethod("setDisplayedValues", String[].class).invoke(mInstance, new Object[]{values});
             } catch (final Exception e) {
                 throw new RuntimeException(e);
             }
@@ -79,16 +79,20 @@ public class StringPicker extends LinearLayout {
     }
 
     public void setValues(final List<String> values) {
-        mValues = new String[values.size()];
-        setValues(values.toArray(mValues));
+        mValues = values.toArray(new String[values.size()]);
+        setValues(mValues);
     }
 
-    private void initialize(final Context context, final AttributeSet attrs) {
+    private void init(final Context context, final AttributeSet attrs) {
         try {
-            final Class<?> clazz = context.getClassLoader().loadClass(PICKER_CLASS);
-            final Constructor<?> constructor = clazz.getConstructor(Context.class, AttributeSet.class);
+            Class<?> clazz = context.getClassLoader().loadClass(PICKER_CLASS);
+            Constructor<?> constructor = clazz.getConstructor(Context.class, AttributeSet.class);
             mInstance = constructor.newInstance(context, attrs);
             mClazz = mInstance.getClass();
+
+            String methodName = "setDescendantFocusability";
+            Method method = mClazz.getMethod(methodName, int.class);
+            method.invoke(mInstance, NumberPicker.FOCUS_BLOCK_DESCENDANTS);
         } catch (final Exception e) {
             throw new RuntimeException(e);
         }
