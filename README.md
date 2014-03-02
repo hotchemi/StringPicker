@@ -5,6 +5,9 @@ StringPicker is a library to provides a custom view and dialog fragment to pick 
 
 ![screen shot](http://gifzo.net/5dMGZEDfpZ.gif)
 
+on 2.x device.
+![screen shot](http://gifzo.net/eCnHCAoINu.gif)
+
 ## Download
 
 Download from maven repository(GitHub) via gradle.
@@ -16,7 +19,7 @@ repositories {
 }
 android {
     dependencies {
-        compile 'hotchemi.stringpicker:stringpicker:0.0.1'
+        compile 'hotchemi.stringpicker:stringpicker:0.0.2'
     }
 }
 ```
@@ -24,6 +27,10 @@ android {
 ## Sample
 
 Please try to move the [sample module](https://github.com/hotchemi/StringPicker/tree/master/sample/).
+
+or get it on google play.
+
+[![google play](https://dl.dropboxusercontent.com/u/54255753/blog/201402/en_generic_rgb_wo_60.png)](https://play.google.com/store/apps/details?id=hotchemi.stringpicker.sample)
 
 ## How to use
 
