@@ -6,6 +6,7 @@ StringPicker is a library to provides a custom view and dialog fragment to pick 
 ![screen shot](http://gifzo.net/5dMGZEDfpZ.gif)
 
 on 2.x device.
+
 ![screen shot](http://gifzo.net/eCnHCAoINu.gif)
 
 ## Download
