@@ -11,19 +11,18 @@ on 2.x device.
 
 ## Download
 
-Download from maven repository(GitHub) via gradle.
+Download from maven central.
 
 ```groovy
-repositories {
-    mavenCentral()
-    maven { url 'https://raw.github.com/hotchemi/StringPicker/master/repository/' }
-}
-android {
-    dependencies {
-        compile 'hotchemi.stringpicker:stringpicker:0.0.2'
-    }
+dependencies {
+    compile 'com.github.hotchemi:stringpicker:0.0.2'
 }
 ```
+
+## ChangeLog
+
+- 2014/02/28 v0.0.1 release.
+- 2014/03/01 v0.0.2 release.
 
 ## Sample
 
@@ -98,12 +97,6 @@ If you want to use your own dialog labels, override string xml resources on your
 
 Supports Android 2.2 or greater.
 
-## Deploy
-
-```sh
-$ ./gradlew uploadArchives
-```
-
 ## Contributing
 
 1. Fork it
@@ -111,11 +104,6 @@ $ ./gradlew uploadArchives
 3. Commit your changes (`git commit -am 'Added some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
-
-## ChangeLog
-
-- 2014/02/28 v0.0.1 release.
-- 2014/03/01 v0.0.2 release.
 
 ## License
 
