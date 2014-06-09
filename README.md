@@ -28,10 +28,6 @@ dependencies {
 
 Please try to move the [sample module](https://github.com/hotchemi/StringPicker/tree/master/sample/).
 
-or get it on google play.
-
-[![google play](https://dl.dropboxusercontent.com/u/54255753/blog/201402/en_generic_rgb_wo_60.png)](https://play.google.com/store/apps/details?id=hotchemi.stringpicker.sample)
-
 ## How to use
 
 ### StringPicker
